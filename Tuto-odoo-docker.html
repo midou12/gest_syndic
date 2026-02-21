@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formation Docker & Odoo 16</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: white;
+    overflow-x: hidden;
+}
+
+header {
+    text-align: center;
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+}
+
+header h1 {
+    font-size: 46px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+header p {
+    margin-top: 15px;
+    font-size: 20px;
+    opacity: 0.9;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 60px 20px;
+}
+
+.section-title {
+    font-size: 30px;
+    margin-bottom: 30px;
+    color: #00f5ff;
+    border-left: 5px solid #00f5ff;
+    padding-left: 15px;
+    font-weight: 700;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(15px);
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 25px;
+    transition: 0.3s ease;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    color: #ffd86b;
+    font-weight: 600;
+}
+
+code {
+    display: block;
+    background: #111;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 10px;
+    color: #00ffcc;
+    font-family: Consolas, monospace;
+    overflow-x: auto;
+    position: relative;
+}
+
+.copy-btn {
+    margin-top: 8px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #00f5ff, #0072ff);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.copy-btn:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 25px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+    font-weight: 600;
+}
+
+.btn:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
+footer {
+    text-align: center;
+    padding: 40px;
+    background: #111;
+    margin-top: 60px;
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+/* Toast notification */
+.toast {
+    visibility: hidden;
+    min-width: 250px;
+    background: linear-gradient(135deg, #00f5ff, #0072ff);
+    color: white;
+    text-align: center;
+    border-radius: 30px;
+    padding: 12px;
+    position: fixed;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    font-weight: 600;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    z-index: 1000;
+}
+
+.toast.show {
+    visibility: visible;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+/* Animation */
+.fade-in {
+    animation: fadeIn 1s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🚀 Formation Docker & Odoo 16</h1>
+    <p>Installation & Déploiement sous Windows</p>
+</header>
+
+<div class="container">
+
+    <div class="section-title">📦 PARTIE 1 : Installation Docker</div>
+
+    <div class="card fade-in">
+        <h3>1️⃣ Activer la virtualisation</h3>
+        <ul>
+            <li>Entrer dans le BIOS (F2 / F10 / DEL)</li>
+            <li>Activer Intel VT-x ou SVM (AMD)</li>
+            <li>Sauvegarder et redémarrer</li>
+        </ul>
+    </div>
+
+    <div class="card fade-in">
+        <h3>2️⃣ Installer WSL</h3>
+        <code id="code-wsl">wsl --install</code>
+        <button class="copy-btn" onclick="copyCode('code-wsl')">📋 Copier</button>
+    </div>
+
+    <div class="card fade-in">
+        <h3>3️⃣ Vérifier Docker</h3>
+        <code id="code-docker">docker --version</code>
+        <button class="copy-btn" onclick="copyCode('code-docker')">📋 Copier</button>
+        <code id="code-compose">docker compose version</code>
+        <button class="copy-btn" onclick="copyCode('code-compose')">📋 Copier</button>
+    </div>
+
+    <div class="section-title">⚙ PARTIE 2 : Installation Odoo 16</div>
+
+    <div class="card fade-in">
+        <h3>1️⃣ Créer un dossier projet</h3>
+        <code id="code-folder">C:\odoo-docker</code>
+        <button class="copy-btn" onclick="copyCode('code-folder')">📋 Copier</button>
+    </div>
+
+    <div class="card fade-in">
+        <h3>2️⃣ docker-compose.yml</h3>
+        <code id="code-compose-yml">
+version: '3.1'
+
+services:
+  web:
+    image: odoo:16.0
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_USER=odoo
+      - POSTGRES_PASSWORD=odoo
+        </code>
+        <button class="copy-btn" onclick="copyCode('code-compose-yml')">📋 Copier</button>
+    </div>
+
+    <div class="card fade-in">
+        <h3>3️⃣ Lancer Odoo</h3>
+        <code id="code-up">docker compose up -d</code>
+        <button class="copy-btn" onclick="copyCode('code-up')">📋 Copier</button>
+    </div>
+
+    <div class="card fade-in">
+        <h3>4️⃣ Accéder à Odoo</h3>
+        <code id="code-url">http://localhost:8069</code>
+        <button class="copy-btn" onclick="copyCode('code-url')">📋 Copier</button>
+    </div>
+
+    <div class="section-title">🛠 Commandes utiles</div>
+
+    <div class="card fade-in">
+        <code id="code-down">docker compose down</code>
+        <button class="copy-btn" onclick="copyCode('code-down')">📋 Copier</button>
+        <code id="code-logs">docker compose logs -f</code>
+        <button class="copy-btn" onclick="copyCode('code-logs')">📋 Copier</button>
+        <code id="code-restart">docker compose restart</code>
+        <button class="copy-btn" onclick="copyCode('code-restart')">📋 Copier</button>
+    </div>
+
+    <a href="#" class="btn">Télécharger le PDF</a>
+
+</div>
+
+<footer>
+    Formation Docker & Odoo 16<br>
+    Préparé par Mehdi Ben Rejeb
+</footer>
+
+<!-- Toast notification -->
+<div id="toast"
